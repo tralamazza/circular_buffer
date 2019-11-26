@@ -13,6 +13,6 @@
 1. Write an circular buffer class with the following features:
     1. Compile time fixed size
     2. Static memory allocation only
-    3. Typed
+    3. Generic data type (e.g. uint8_t)
     4. Two put(data) overflow behaviors: overwrite and discard data.
 2. Write tests showing your circular buffer in action.
