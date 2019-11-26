@@ -7,10 +7,11 @@
 3. The code should compile cleanly, no errors/warnings.
 4. Static memory only, no malloc()/new.
 5. Open a pull request with your changes.
+6. Use C++
 
 ## Coding task
 
-1. Write an circular buffer class with the following features:
+1. Write a circular buffer class with the following features:
     1. Compile time fixed size
     2. Static memory allocation only
     3. Generic data type (e.g. uint8_t)
