@@ -6,6 +6,7 @@
 2. Use any build tool (e.g. make).
 3. The code should compile cleanly, no errors/warnings.
 4. Static memory only, no malloc()/new.
+5. Open a pull request with your changes.
 
 ## Coding task
 
