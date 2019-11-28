@@ -17,3 +17,21 @@
     3. Generic data type (e.g. uint8_t)
     4. Two put(data) overflow behaviors: overwrite and discard data.
 2. Write tests showing your circular buffer in action.
+
+## assumption: 
+
+1. Only one circular buffer per data type.
+2. Tests need a get function. 
+3. On an empty buffer get should not be used. 
+3. Before using the get function the buffer has to be tested if empty. 
+4. MISRA C++ compliance, common style guides and similar needs not to be focused. 
+
+## Build
+
+1. Use a Linux machine. 
+2. Open a terminal.  
+3. Go to the source directory "circular_buffer".
+3. In the "circular_buffer" folder type "make".
+5. Run the program "./testcb".
+6. Final result printed in terminal should be "GHIJA".
+7. You can use gdb for debugging if needed.
