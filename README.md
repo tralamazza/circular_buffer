@@ -18,7 +18,7 @@
     4. Two put(data) overflow behaviors: overwrite and discard data.
 2. Write tests showing your circular buffer in action.
 
-## assumption: 
+## assumption
 
 1. Only one circular buffer per data type.
 2. Tests need a get function. 
