@@ -1,8 +1,8 @@
 #**********************************************************************************
-# Author: Sascha Heinisch
-# Date:   28.11.2019
+# Author:      Sascha Heinisch
+# Date:        28.11.2019
 # 
-# Class: Make file for circular buffer test. 
+# Description: Make file for circular buffer test. 
 #
 #**********************************************************************************
 
