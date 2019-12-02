@@ -10,6 +10,7 @@ using namespace std;
 // Name:     readBufferComplete
 // 
 // Function: Read and print the complete circular buffer until it is empty. 
+//           If buffer is empty nothing will be printed.
 //
 // Param:    void
 // Return:   void
@@ -17,10 +18,11 @@ using namespace std;
 //**********************************************************************************
 void readBufferComplete(void)
 {
+  uint8_t item; 
   cout<<endl<<"Reading circular complete buffer<uint8_t>[5]. "<<endl<<endl;    
-  while (circularBuffer<uint8_t>::notEmpty())
+  while (circularBuffer<uint8_t,5>::get(item))
   {
-    cout<<"Reading "<<circularBuffer<uint8_t>::get()<<endl;
+      cout<<"Reading "<<item<<endl;
   }
 }
 //**********************************************************************************
@@ -28,7 +30,7 @@ void readBufferComplete(void)
 // Date:     28.11.2019
 // Name:     readBufferOneItem
 // 
-// Function: Read one item from buffer. 
+// Function: Read one item from buffer. If buffer is empty nothing will be printed.
 //
 // Param:    void
 // Return:   void
@@ -36,10 +38,11 @@ void readBufferComplete(void)
 //**********************************************************************************
 void readBufferOneItem(void)
 {
+  uint8_t item; 
   cout<<endl<<"Reading circular one item from buffer<uint8_t>[5]. "<<endl<<endl;    
-  if (circularBuffer<uint8_t>::notEmpty())
+  if (circularBuffer<uint8_t,5>::get(item))
   {
-    cout<<"Reading "<<circularBuffer<uint8_t>::get()<<endl;
+      cout<<"Reading "<<item<<endl;
   }
 }
 //**********************************************************************************
@@ -60,7 +63,7 @@ void putOverwriteTest(int numberOfItems)
   
   for (uint8_t i=65; i<numberOfItems; i++) 
   {
-    circularBuffer<uint8_t>::put_overwrite(i);
+    circularBuffer<uint8_t,5>::put_overwrite(i);
     cout<<"Putting "<<i<<endl;
   }
 
@@ -85,7 +88,7 @@ void putDiscardTest(int numberOfItems)
   
   for (uint8_t i=65; i<numberOfItems; i++) 
   {
-    circularBuffer<uint8_t>::put_discard(i);
+    circularBuffer<uint8_t,5>::put_discard(i);
     cout<<"Putting "<<i<<endl;
   }
 }

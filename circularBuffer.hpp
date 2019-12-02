@@ -1,7 +1,5 @@
 #ifndef circularBuffer_
-#define circsularBuffer_
-
-#define BufferSize 5             //circular buffer size 
+#define circularBuffer_
 
 //**********************************************************************************
 // Author: Sascha Heinisch
@@ -10,7 +8,7 @@
 // Class: Declarartion of circular buffer class. 
 //
 //**********************************************************************************
-template <class T> class circularBuffer
+template <class T, uint32_t BufferSize> class circularBuffer
 {
   public:
 
@@ -23,14 +21,14 @@ template <class T> class circularBuffer
   
     static void put_overwrite(T item);  
     static void put_discard(T item);
-    static T    get();
+    static bool get(T &item);
     static bool notEmpty();
 };
 
-template <class T> T      circularBuffer<T>::buffer[BufferSize] = {};
-template <class T> size_t circularBuffer<T>::head =                0;
-template <class T> size_t circularBuffer<T>::tail =                0;
-template <class T> bool   circularBuffer<T>::full =            false;
+template <class T, uint32_t BufferSize> T      circularBuffer<T, BufferSize>::buffer[BufferSize] = {};
+template <class T, uint32_t BufferSize> size_t circularBuffer<T, BufferSize>::head =                0;
+template <class T, uint32_t BufferSize> size_t circularBuffer<T, BufferSize>::tail =                0;
+template <class T, uint32_t BufferSize> bool   circularBuffer<T, BufferSize>::full =            false;
 
 //**********************************************************************************
 // Author:   Sascha Heinisch
@@ -43,7 +41,7 @@ template <class T> bool   circularBuffer<T>::full =            false;
 // Return:   void
 //
 //**********************************************************************************
-template <class T> void circularBuffer<T>::put_overwrite(T item)
+template <class T, uint32_t BufferSize> void circularBuffer<T, BufferSize>::put_overwrite(T item)
 {
   buffer[head] = item;               //store item
   if (true == full)                  //if full tail++ to become equal with head
@@ -65,7 +63,7 @@ template <class T> void circularBuffer<T>::put_overwrite(T item)
 // Return:   void
 //
 //**********************************************************************************
-template <class T> void circularBuffer<T>::put_discard(T item)
+template <class T, uint32_t BufferSize> void circularBuffer<T, BufferSize>::put_discard(T item)
 {
   if (false == full)                 //don't write item if full
   {
@@ -86,14 +84,14 @@ template <class T> void circularBuffer<T>::put_discard(T item)
 // Return:   template <class T> T
 //
 //**********************************************************************************
-template <class T> T circularBuffer<T>::get(void)
-{
-  T returnValue;              
-  
-  returnValue = buffer[tail];        //get oldest item
+template <class T, uint32_t BufferSize> bool circularBuffer<T, BufferSize>::get(T &item)
+{  
+  bool returnValue = false;
+  item = buffer[tail];               //get oldest item
   if (notEmpty())                    //not empty
   {
     tail = (tail + 1) % BufferSize;
+    returnValue = true;
   } 
   full = false;                      //after read buffer cannot be full
   return returnValue;
@@ -109,7 +107,7 @@ template <class T> T circularBuffer<T>::get(void)
 // Return:   boolean
 //
 //**********************************************************************************
-template <class T> bool circularBuffer<T>::notEmpty(void)
+template <class T, uint32_t BufferSize> bool circularBuffer<T, BufferSize>::notEmpty(void)
 {
   return (full || (head != tail));
 }
