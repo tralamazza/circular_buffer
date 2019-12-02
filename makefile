@@ -19,4 +19,4 @@ testcb: $(OBJ)
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -rf $(BIN) $(OBJ) testcb
+	rm -rf $(OBJ) testcb
