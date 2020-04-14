@@ -9,7 +9,7 @@ SCENARIO("circular buffer can put and get values", "[circularbuffer]")
     GIVEN("A circular buffer")
     {
         constexpr std::size_t Size = 4;
-        CircularBuffer<Size> circularBuffer {};
+        CircularBuffer<std::uint8_t, Size> circularBuffer {};
 
         REQUIRE(circularBuffer.capacity() == Size - 1);
         REQUIRE(circularBuffer.size() == 0);
