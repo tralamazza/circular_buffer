@@ -17,3 +17,32 @@
     3. Generic data type (e.g. uint8_t)
     4. Two put(data) overflow behaviors: overwrite and discard data.
 2. Write tests showing your circular buffer in action.
+
+## Solution
+
+### Design rationale
+
+Since empty and full ring buffers both have `readPos == writePos`,
+implementations have to find a small tradeoff between space utilization and runtime efficiency.
+To resolve the ambiguity, they can either store `size - 1` elements and therefore waste one entry,
+or they introduce separate state tracking, which complicates the implementation.
+
+Since no further constraints were given in the objectives, it was decided to prefer the first approach.
+In situations where memory was severely constrained, this would not be the best solution.
+
+### Building and running
+
+CMake (https://cmake.org) is used for building.
+Tests can be executed by running `ctest`.
+
+On Unix machines,
+the following commands are sufficient:
+
+```
+$ mkdir build
+$ cd build
+$ cmake ..
+...
+$ cmake --build .
+$ ctest -V
+```
