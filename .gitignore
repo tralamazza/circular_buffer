@@ -1,0 +1,5 @@
+*.o
+*.vscode
+*tests/output
+*googletest
+tests/circular_buffer_tests
