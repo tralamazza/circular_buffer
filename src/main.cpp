@@ -1,7 +1,7 @@
 #include <iostream>
 #include "buffer.h"
 
-#define BUFFER_SIZE_1   300
+#define BUFFER_SIZE_1   10
 
 #define BUFFER_TEST_1   30
 
