@@ -1,0 +1,14 @@
+Written using VS Code with Ubuntu WSL on Windows 10.
+
+In VS Code used Easy C/C++ project for creating the initial C++ project 
+structure. This creates common C++ structure which is compiled using g++
+(g++ (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0), with bin stored to bin directory.
+Easy C/C++ project creates Makefile which can be used on every
+
+Making of project:
+- g++ installed (with support for C++17)
+- make installed (GNU Make 4.1 version on my side)
+- navigate to the project directory via command line (e.g. using Ubuntu WSL on Windows)
+- run make
+- binary files stored in bin/
+- run program bin/make
