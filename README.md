@@ -17,3 +17,11 @@
     3. Generic data type (e.g. uint8_t)
     4. Two put(data) overflow behaviors: overwrite and discard data.
 2. Write tests showing your circular buffer in action.
+
+## Build instructions
+
+This solution is using the googletest framework for C++ unit tests.
+
+1. Clone googletest into the root folder of this project via
+    `git clone https://github.com/google/googletest.git`
+2. Run `make check` inside the `tests` folder in order to compile and run the tests.
