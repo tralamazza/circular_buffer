@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.10)
+project(CircularBuffer)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_FLAGS "-O3 -std=c++17 -pthread")
+ 
+find_package(GTest REQUIRED)
+include_directories(include test ${GTEST_INCLUDE_DIRS})
+add_executable(CircularBuffer test/circular_buffer_test.cpp)
+target_link_libraries(CircularBuffer ${GTEST_LIBRARIES} pthread gtest gtest_main)
+add_test(CircularBuffer CircularBuffer)
+add_custom_target(circular_buffer ALL DEPENDS CircularBuffer COMMAND CircularBuffer)
