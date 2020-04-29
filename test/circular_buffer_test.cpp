@@ -3,17 +3,19 @@
 namespace Circular {
 namespace Buffer {
 namespace {
+using Type = std::int64_t;
 class CircularBufferTest : public ::testing::Test {
  public:
   void SetUp() override {}
   void TearDown() override {}
-  CircularBuffer<int> circular_buffer_;
+  CircularBuffer<Type> circular_buffer_;
 };
+
 TEST_F(CircularBufferTest, CapacityTest) {
   EXPECT_EQ(kMaxBufferSize, circular_buffer_.Capacity());
 }
 
-class BufferSizeTest : public ::testing::TestWithParam<int> {
+class BufferSizeTest : public ::testing::TestWithParam<Type> {
  public:
   void SetUp() override {
     result_size_ = GetParam() % kMaxBufferSize;
@@ -31,7 +33,7 @@ class BufferSizeTest : public ::testing::TestWithParam<int> {
   size_t result_size_{0};
   bool result_empty_{false};
   bool result_full_{false};
-  CircularBuffer<int> circular_buffer_;
+  CircularBuffer<Type> circular_buffer_;
 };
 
 TEST_P(BufferSizeTest, SizeTest) {
@@ -46,7 +48,7 @@ TEST_P(BufferSizeTest, FullTest) {
 INSTANTIATE_TEST_CASE_P(SizeParam, BufferSizeTest,
                         ::testing::Values(0, kMaxBufferSize + 1));
 
-class BufferDataTest : public ::testing::TestWithParam<std::tuple<int, bool>> {
+class BufferDataTest : public ::testing::TestWithParam<std::tuple<Type, bool>> {
  public:
   void SetUp() override {
     auto buffer_size = std::get<0>(GetParam());
@@ -64,7 +66,7 @@ class BufferDataTest : public ::testing::TestWithParam<std::tuple<int, bool>> {
   void TearDown() override {}
   size_t result_start_index_{0};
   size_t result_end_index_{0};
-  CircularBuffer<int> circular_buffer_;
+  CircularBuffer<Type> circular_buffer_;
 };
 
 TEST_P(BufferDataTest, VerifyBuffer) {
