@@ -37,11 +37,13 @@ Go to circular_buffer path. Execute the following commands.
 1. cmake CMakeLists.txt
 2. make
 
-CircularBuffer is built and run, an executable 'CircularBuffer' will be created
+CircularBuffer is built and run, an executable 'CircularBuffer' will be created.
+
 CMakeLists.txt has command to run the CircularBuffer Testcases for each build to encourage Test driven development.
 
 ## Run
 
-In the circular_buffer path, 'CircularBuffer' executable will be created after successful build
+In the circular_buffer path, 'CircularBuffer' executable will be created after successful build.
+
 Execute the following command to run the testcases.
 ./CircularBuffer
